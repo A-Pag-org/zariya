@@ -1,7 +1,7 @@
-import { DonorMappingModule } from "./features/donor-mapping/DonorMappingModule";
+import { AuthPages } from "./features/auth/AuthPages";
 
 function App() {
-  return <DonorMappingModule />;
+  return <AuthPages />;
 }
 
 export default App;
