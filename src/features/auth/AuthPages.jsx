@@ -5,8 +5,20 @@ import { SignInForm } from "./components/SignInForm";
 import { SignUpForm } from "./components/SignUpForm";
 import { AUTH_MODES } from "./constants";
 
-export function AuthPages() {
+export function AuthPages({ onAuthenticated }) {
   const [mode, setMode] = useState(AUTH_MODES.SIGN_IN);
+
+  async function handleSignIn(values) {
+    const result = await signIn(values);
+    onAuthenticated?.(result.user);
+    return result;
+  }
+
+  async function handleSignUp(values) {
+    const result = await signUp(values);
+    onAuthenticated?.(result.user);
+    return result;
+  }
 
   return (
     <div className="za-auth-shell">
@@ -17,9 +29,15 @@ export function AuthPages() {
 
         <main className="za-auth-content">
           {mode === AUTH_MODES.SIGN_IN ? (
-            <SignInForm onSubmit={signIn} onSwitchToSignUp={() => setMode(AUTH_MODES.SIGN_UP)} />
+            <SignInForm
+              onSubmit={handleSignIn}
+              onSwitchToSignUp={() => setMode(AUTH_MODES.SIGN_UP)}
+            />
           ) : (
-            <SignUpForm onSubmit={signUp} onSwitchToSignIn={() => setMode(AUTH_MODES.SIGN_IN)} />
+            <SignUpForm
+              onSubmit={handleSignUp}
+              onSwitchToSignIn={() => setMode(AUTH_MODES.SIGN_IN)}
+            />
           )}
         </main>
 

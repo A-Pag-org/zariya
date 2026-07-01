@@ -137,6 +137,27 @@ input {
   box-shadow: 0 0 0 3px rgba(51, 65, 85, 0.1);
 }
 
+.dm-topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.dm-signout {
+  border: 1px solid #c8d1dd;
+  background: #ffffff;
+  color: #1a212b;
+  border-radius: 10px;
+  padding: 9px 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.dm-signout:hover {
+  background: #eef2f7;
+  border-color: #3f4a5a;
+}
+
 .dm-user {
   display: flex;
   gap: 10px;

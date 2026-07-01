@@ -59,7 +59,19 @@ function SideNav() {
   );
 }
 
-function TopBar({ searchValue, onSearchChange }) {
+function getInitials(name) {
+  if (!name) {
+    return "ZU";
+  }
+
+  const parts = name.trim().split(/\s+/).slice(0, 2);
+  return parts.map((part) => part[0]?.toUpperCase() || "").join("") || "ZU";
+}
+
+function TopBar({ searchValue, onSearchChange, user, onSignOut }) {
+  const displayName = user?.name || "Zariya User";
+  const subtitle = user?.email || "A-PAG";
+
   return (
     <header className="dm-topbar">
       <input
@@ -69,12 +81,19 @@ function TopBar({ searchValue, onSearchChange }) {
         placeholder="Search donor name, donor code, source..."
         aria-label="Search donors"
       />
-      <div className="dm-user">
-        <span className="dm-avatar">PG</span>
-        <div>
-          <p className="dm-user-name">Pooja Gill</p>
-          <p className="dm-user-subtitle">CFO · A-PAG</p>
+      <div className="dm-topbar-right">
+        <div className="dm-user">
+          <span className="dm-avatar">{getInitials(displayName)}</span>
+          <div>
+            <p className="dm-user-name">{displayName}</p>
+            <p className="dm-user-subtitle">{subtitle}</p>
+          </div>
         </div>
+        {onSignOut ? (
+          <button type="button" className="dm-signout" onClick={onSignOut}>
+            Sign out
+          </button>
+        ) : null}
       </div>
     </header>
   );
@@ -178,7 +197,7 @@ function DonorTable({ donors, selectedId, onSelect }) {
   );
 }
 
-export function DonorMappingModule() {
+export function DonorMappingModule({ user, onSignOut }) {
   const [searchValue, setSearchValue] = useState("");
   const [selectedDonorId, setSelectedDonorId] = useState(donorRecords[0]?.donorId || null);
 
@@ -228,7 +247,12 @@ export function DonorMappingModule() {
     <div className="dm-shell">
       <SideNav />
       <div className="dm-main-area">
-        <TopBar searchValue={searchValue} onSearchChange={setSearchValue} />
+        <TopBar
+          searchValue={searchValue}
+          onSearchChange={setSearchValue}
+          user={user}
+          onSignOut={onSignOut}
+        />
 
         <main className="dm-content">
           <section className="dm-title-row">
