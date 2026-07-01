@@ -2,6 +2,12 @@
   font-family: Inter, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   color: #0f172a;
   background-color: #eef0f4;
+  --graphite-950: #12161d;
+  --graphite-900: #1a212b;
+  --graphite-850: #232c38;
+  --graphite-700: #3f4a5a;
+  --graphite-200: #d7dee8;
+  --graphite-100: #e8edf4;
 }
 
 *,
@@ -27,9 +33,9 @@ input {
 }
 
 .dm-sidebar {
-  background: #05070a;
+  background: linear-gradient(180deg, var(--graphite-950) 0%, #151a22 100%);
   color: #f8fafc;
-  border-right: 1px solid #1d2430;
+  border-right: 1px solid #222b37;
   padding: 18px 14px;
 }
 
@@ -45,8 +51,8 @@ input {
   width: 36px;
   height: 36px;
   border-radius: 8px;
-  background: #111827;
-  border: 1px solid #374151;
+  background: var(--graphite-900);
+  border: 1px solid #4b5564;
   color: #f8fafc;
   font-weight: 800;
   display: grid;
@@ -94,11 +100,11 @@ input {
 }
 
 .dm-nav-item:hover {
-  background: #111827;
+  background: var(--graphite-900);
 }
 
 .dm-nav-item.active {
-  background: linear-gradient(90deg, #111827 0%, #1f2937 100%);
+  background: linear-gradient(90deg, var(--graphite-900) 0%, var(--graphite-850) 100%);
   color: #f8fafc;
 }
 
@@ -143,7 +149,7 @@ input {
   border-radius: 50%;
   display: grid;
   place-items: center;
-  background: #020617;
+  background: var(--graphite-900);
   color: #ffffff;
   font-size: 12px;
   font-weight: 700;
@@ -202,8 +208,8 @@ input {
 }
 
 .stat-card-dark {
-  background: linear-gradient(140deg, #111827 0%, #020617 100%);
-  border-color: #111827;
+  background: linear-gradient(140deg, var(--graphite-900) 0%, var(--graphite-950) 100%);
+  border-color: var(--graphite-900);
   color: #f8fafc;
 }
 
@@ -292,12 +298,12 @@ input {
 }
 
 .pill-domestic {
-  background: #e2e8f0;
-  color: #334155;
+  background: var(--graphite-100);
+  color: #3b4656;
 }
 
 .pill-foreign {
-  background: #0f172a;
+  background: var(--graphite-900);
   color: #f8fafc;
 }
 
@@ -323,11 +329,11 @@ input {
 .allocation-fill {
   height: 100%;
   border-radius: inherit;
-  background: #0f172a;
+  background: var(--graphite-900);
 }
 
 .allocation-fill.low {
-  background: #4b5563;
+  background: var(--graphite-700);
 }
 
 .allocation-label {
@@ -347,7 +353,7 @@ input {
   border: none;
   position: fixed;
   inset: 0;
-  background: rgba(2, 6, 23, 0.32);
+  background: rgba(18, 22, 29, 0.36);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.2s ease;
@@ -433,7 +439,7 @@ input {
 }
 
 .drawer-link {
-  color: #0f172a;
+  color: var(--graphite-900);
 }
 
 .drawer-empty {
