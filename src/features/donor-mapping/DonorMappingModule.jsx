@@ -199,7 +199,7 @@ function DonorTable({ donors, selectedId, onSelect }) {
 
 export function DonorMappingModule({ user, onSignOut }) {
   const [searchValue, setSearchValue] = useState("");
-  const [selectedDonorId, setSelectedDonorId] = useState(donorRecords[0]?.donorId || null);
+  const [selectedDonorId, setSelectedDonorId] = useState(null);
 
   const filteredDonors = useMemo(() => {
     const query = searchValue.trim().toLowerCase();
@@ -216,7 +216,7 @@ export function DonorMappingModule({ user, onSignOut }) {
   }, [searchValue]);
 
   const selectedDonor =
-    donorRecords.find((donor) => donor.donorId === selectedDonorId) || filteredDonors[0] || null;
+    donorRecords.find((donor) => donor.donorId === selectedDonorId) || null;
 
   const summary = useMemo(() => {
     const donors = donorRecords.length;
