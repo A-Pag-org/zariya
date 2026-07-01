@@ -1,8 +1,7 @@
-import { AuthPrintPage } from "./features/auth-print/AuthPrintPage";
-import { authPrintMockData } from "./features/auth-print/authPrintMockData";
+import { DonorMappingModule } from "./features/donor-mapping/DonorMappingModule";
 
 function App() {
-  return <AuthPrintPage documentData={authPrintMockData} />;
+  return <DonorMappingModule />;
 }
 
 export default App;
