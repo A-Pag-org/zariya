@@ -214,10 +214,34 @@ export const detailFieldSchema = [
   { key: "mouLink", label: "MoU (Link)", type: "link" }
 ];
 
+function nextDonorId() {
+  const maxId = donorStore.reduce((max, donor) => {
+    const numeric = Number(donor.donorId.replace("DNR-", ""));
+    return Number.isNaN(numeric) ? max : Math.max(max, numeric);
+  }, 1000);
+  return `DNR-${maxId + 1}`;
+}
+
 export const donorRepository = {
   async list() {
     await delay();
     return donorStore.map((donor) => ({ ...donor }));
+  },
+
+  async create(attributes) {
+    await delay();
+    if (donorStore.some((donor) => donor.donorCode === attributes.donorCode)) {
+      throw new Error(`Donor code ${attributes.donorCode} is already in use.`);
+    }
+    const now = new Date().toISOString();
+    const donor = {
+      ...attributes,
+      donorId: nextDonorId(),
+      createdAt: now,
+      updatedAt: now
+    };
+    donorStore.push(donor);
+    return { ...donor };
   },
 
   async update(donorId, patch) {

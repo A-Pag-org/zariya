@@ -17,7 +17,7 @@ Key decisions:
 | Language | React 19 + modern JavaScript (no TypeScript, per constraint) |
 | Composition seam | Module registry + static manifests (Open/Closed Principle) |
 | Authorization | Permission + policy engine — roles are *data* (permission bundles), never code branches |
-| Signup | Accounts start `pending`; activation requires approval by **technology@a-pag.org** |
+| Signup | Accounts start `pending`; activation requires approval by **technology@theconvergencefoundation.org** |
 | Server state | TanStack Query behind per-module repositories |
 | UI | MUI with a single platform theme (quiet, editorial, hairline aesthetic) |
 | Data access | Axios singleton + Repository pattern per module |
@@ -107,9 +107,9 @@ export const donorManagementModule = {
   id: "donor-management",     // permission scope + route base
   title: "Donor Management",  // navigation label
   icon: VolunteerActivismOutlinedIcon,
-  group: "Operations",        // nav group
+  group: "Control",           // nav group
   path: "/donor-management",
-  order: 20,
+  order: 32,
   routes: [{ index: true, Component: lazy(() => import("./pages/DonorManagementPage.jsx")) }]
 };
 ```
@@ -139,10 +139,10 @@ Implemented in `core/auth`. The mock `authApi` reproduces the production contrac
 - **Multi-tab sync:** the `storage` event mirrors sign-in/sign-out across tabs instantly.
 - **Route protection:** `RequireAuth` redirects anonymous users to `/sign-in`, preserving the intended destination.
 
-**Signup with manual approval.** Registration creates an account with `status: "pending"` and the requested role. **technology@a-pag.org** must approve the account; until then sign-in is refused with an explicit "awaiting approval" message, and the policy engine denies everything (only `status: "active"` users pass `can()`). Role permissions therefore *activate* at approval time, not at signup.
+**Signup with manual approval.** Registration creates an account with `status: "pending"` and the requested role. **technology@theconvergencefoundation.org** must approve the account; until then sign-in is refused with an explicit "awaiting approval" message, and the policy engine denies everything (only `status: "active"` users pass `can()`). Role permissions therefore *activate* at approval time, not at signup.
 
 ```
-Register ──► status: pending ──► approval by technology@a-pag.org ──► status: active
+Register ──► status: pending ──► approval by technology@theconvergencefoundation.org ──► status: active
    │                │                                                     │
    ▼                ▼                                                     ▼
 /pending-approval   sign-in blocked with explanation          role grants take effect

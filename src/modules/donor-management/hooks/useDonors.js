@@ -12,6 +12,14 @@ export function useDonorsQuery() {
   return useQuery({ queryKey: donorKeys.donors(), queryFn: donorRepository.list });
 }
 
+export function useCreateDonorMutation() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (attributes) => donorRepository.create(attributes),
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: donorKeys.donors() })
+  });
+}
+
 export function useUpdateDonorMutation() {
   const queryClient = useQueryClient();
   return useMutation({

@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Link, Typography } from "@mui/material";
 import { Navigate, Outlet } from "react-router-dom";
 import { useAuth } from "../../../core/auth";
 
@@ -29,14 +29,23 @@ export function AuthLayout() {
           component="p"
           sx={{ mt: 0.5, color: "secondary.main" }}
         >
-          A-PAG Operations Platform
+          Budgeting · Trading · Reporting
         </Typography>
       </Box>
 
       <Outlet />
 
       <Typography variant="caption" color="text.secondary" sx={{ mt: "auto", pt: 6 }}>
-        © {new Date().getFullYear()} A-PAG · Authorized personnel only
+        © {new Date().getFullYear()}{" "}
+        <Link
+          href="https://www.theconvergencefoundation.org"
+          target="_blank"
+          rel="noreferrer"
+          color="inherit"
+        >
+          The Convergence Foundation
+        </Link>{" "}
+        · Authorized personnel only
       </Typography>
     </Box>
   );

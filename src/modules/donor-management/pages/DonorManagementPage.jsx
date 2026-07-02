@@ -1,8 +1,11 @@
+import AddRoundedIcon from "@mui/icons-material/AddRounded";
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
-import { Grid, InputAdornment, TextField } from "@mui/material";
+import { Button, Grid, InputAdornment, Stack, TextField } from "@mui/material";
 import { useMemo, useState } from "react";
+import { ACTIONS, Can } from "../../../core/authz";
 import { PageHeader, StatCard } from "../../../shared/components";
 import { DonorDetailDrawer } from "../components/DonorDetailDrawer";
+import { DonorFormDialog } from "../components/DonorFormDialog";
 import { DonorTable } from "../components/DonorTable";
 import { useDonorsQuery } from "../hooks/useDonors";
 import { formatCompactCroreFromLakhs } from "../lib/formatters";
@@ -11,6 +14,7 @@ export default function DonorManagementPage() {
   const { data: donors = [], isLoading } = useDonorsQuery();
   const [search, setSearch] = useState("");
   const [selectedDonorId, setSelectedDonorId] = useState(null);
+  const [isAdding, setIsAdding] = useState(false);
 
   const filteredDonors = useMemo(() => {
     const query = search.trim().toLowerCase();
@@ -39,26 +43,37 @@ export default function DonorManagementPage() {
   return (
     <>
       <PageHeader
-        eyebrow="Operations"
+        eyebrow="Control"
         title="Donor agreements & mapping"
         subtitle="Funding sources mapped to budget lines — 100% mapping integrity required."
         actions={
-          <TextField
-            size="small"
-            placeholder="Search name, code, source…"
-            value={search}
-            onChange={(event) => setSearch(event.target.value)}
-            sx={{ width: { xs: "100%", sm: 320 } }}
-            slotProps={{
-              input: {
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <SearchRoundedIcon sx={{ fontSize: 18 }} />
-                  </InputAdornment>
-                )
-              }
-            }}
-          />
+          <Stack direction={{ xs: "column", sm: "row" }} spacing={1.5}>
+            <TextField
+              size="small"
+              placeholder="Search name, code, source…"
+              value={search}
+              onChange={(event) => setSearch(event.target.value)}
+              sx={{ width: { xs: "100%", sm: 300 } }}
+              slotProps={{
+                input: {
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <SearchRoundedIcon sx={{ fontSize: 18 }} />
+                    </InputAdornment>
+                  )
+                }
+              }}
+            />
+            <Can action={ACTIONS.EDIT} module="donor-management">
+              <Button
+                variant="contained"
+                startIcon={<AddRoundedIcon sx={{ fontSize: 18 }} />}
+                onClick={() => setIsAdding(true)}
+              >
+                Add donor
+              </Button>
+            </Can>
+          </Stack>
         }
       />
 
@@ -89,6 +104,8 @@ export default function DonorManagementPage() {
         open={Boolean(selectedDonor)}
         onClose={() => setSelectedDonorId(null)}
       />
+
+      <DonorFormDialog donor={null} open={isAdding} onClose={() => setIsAdding(false)} />
     </>
   );
 }

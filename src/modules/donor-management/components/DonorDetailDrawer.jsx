@@ -16,7 +16,7 @@ import { ACTIONS, Can } from "../../../core/authz";
 import { detailFieldSchema } from "../api/donorRepository";
 import { formatDateTime } from "../lib/formatters";
 import { DonorComments } from "./DonorComments";
-import { DonorEditDialog } from "./DonorEditDialog";
+import { DonorFormDialog } from "./DonorFormDialog";
 
 function FieldValue({ donor, field }) {
   const value = donor?.[field.key];
@@ -104,7 +104,7 @@ export function DonorDetailDrawer({ donor, open, onClose }) {
             <DonorComments donorId={donor.donorId} />
           </Box>
 
-          <DonorEditDialog donor={donor} open={isEditing} onClose={() => setIsEditing(false)} />
+          <DonorFormDialog donor={donor} open={isEditing} onClose={() => setIsEditing(false)} />
         </>
       ) : null}
     </Drawer>

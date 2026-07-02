@@ -4,13 +4,16 @@ import { ROLES } from "../authz/roles";
 //
 // Simulates the real contract the UI will eventually talk to over Axios:
 // JWT access tokens (short-lived) + rotating refresh tokens, and a signup
-// flow where new accounts stay `pending` until technology@a-pag.org approves
-// them. Swap the internals for real endpoints without touching callers.
+// flow where new accounts stay `pending` until the technology team at
+// The Convergence Foundation approves them. Swap the internals for real
+// endpoints without touching callers.
 
-export const APPROVAL_AUTHORITY = "technology@a-pag.org";
+export const APPROVAL_AUTHORITY = "technology@theconvergencefoundation.org";
 export const DEMO_PASSWORD = "Zariya#2026";
 
-const USERS_KEY = "zariya.auth.directory";
+// Versioned so seed changes (e.g. the rebranded directory) invalidate
+// previously persisted mock directories.
+const USERS_KEY = "zariya.auth.directory.v2";
 const ACCESS_TTL_MS = 15 * 60 * 1000;
 const REFRESH_TTL_MS = 7 * 24 * 60 * 60 * 1000;
 
@@ -18,7 +21,7 @@ const SEED_USERS = [
   {
     id: "usr-ceo",
     name: "Arjun Mehta",
-    email: "ceo@a-pag.org",
+    email: "ceo@theconvergencefoundation.org",
     password: DEMO_PASSWORD,
     role: ROLES.CEO.id,
     status: "active"
@@ -26,7 +29,7 @@ const SEED_USERS = [
   {
     id: "usr-finance",
     name: "Priya Nair",
-    email: "finance@a-pag.org",
+    email: "finance@theconvergencefoundation.org",
     password: DEMO_PASSWORD,
     role: ROLES.FINANCE_OFFICER.id,
     status: "active"
@@ -34,7 +37,7 @@ const SEED_USERS = [
   {
     id: "usr-fundraising",
     name: "Kabir Anand",
-    email: "fundraising@a-pag.org",
+    email: "fundraising@theconvergencefoundation.org",
     password: DEMO_PASSWORD,
     role: ROLES.FUNDRAISING_LEAD.id,
     status: "active"

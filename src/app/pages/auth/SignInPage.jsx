@@ -19,9 +19,9 @@ import { ROLE_LIST } from "../../../core/authz";
 import { signInSchema } from "./authSchemas";
 
 const DEMO_ACCOUNTS = [
-  { email: "ceo@a-pag.org", role: ROLE_LIST[0].label },
-  { email: "finance@a-pag.org", role: ROLE_LIST[1].label },
-  { email: "fundraising@a-pag.org", role: ROLE_LIST[2].label }
+  { email: "ceo@theconvergencefoundation.org", role: ROLE_LIST[0].label },
+  { email: "finance@theconvergencefoundation.org", role: ROLE_LIST[1].label },
+  { email: "fundraising@theconvergencefoundation.org", role: ROLE_LIST[2].label }
 ];
 
 export function SignInPage() {

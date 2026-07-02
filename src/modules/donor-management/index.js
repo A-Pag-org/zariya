@@ -6,9 +6,9 @@ export const donorManagementModule = {
   id: "donor-management",
   title: "Donor Management",
   icon: VolunteerActivismOutlinedIcon,
-  group: "Operations",
+  group: "Control",
   path: "/donor-management",
-  order: 20,
+  order: 32,
   routes: [
     { index: true, Component: lazy(() => import("./pages/DonorManagementPage.jsx")) }
   ]
