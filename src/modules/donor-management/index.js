@@ -1,0 +1,15 @@
+import VolunteerActivismOutlinedIcon from "@mui/icons-material/VolunteerActivismOutlined";
+import { lazy } from "react";
+import "./policies";
+
+export const donorManagementModule = {
+  id: "donor-management",
+  title: "Donor Management",
+  icon: VolunteerActivismOutlinedIcon,
+  group: "Operations",
+  path: "/donor-management",
+  order: 20,
+  routes: [
+    { index: true, Component: lazy(() => import("./pages/DonorManagementPage.jsx")) }
+  ]
+};
