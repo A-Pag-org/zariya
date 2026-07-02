@@ -4,11 +4,10 @@ import { ROLES } from "../authz/roles";
 //
 // Simulates the real contract the UI will eventually talk to over Axios:
 // JWT access tokens (short-lived) + rotating refresh tokens, and a signup
-// flow where new accounts stay `pending` until the technology team at
-// The Convergence Foundation approves them. Swap the internals for real
-// endpoints without touching callers.
+// flow where new accounts stay `pending` until the technology team approves
+// them. Swap the internals for real endpoints without touching callers.
 
-export const APPROVAL_AUTHORITY = "technology@theconvergencefoundation.org";
+export const APPROVAL_AUTHORITY = "technology@a-pag.org";
 export const DEMO_PASSWORD = "Zariya#2026";
 
 // Versioned so seed changes (e.g. the rebranded directory) invalidate

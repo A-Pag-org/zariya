@@ -15,7 +15,7 @@ import { createStubModule } from "./stubModule";
 // The single integration point for modules: register a manifest here and the
 // platform derives navigation, routes and permission scopes from it.
 //
-// The module map mirrors the Zariya scope document ("Budgeting, Trading &
+// The module map mirrors the Zariya scope document ("Budgeting, Tracking &
 // Reporting Tool"): the four core financial layers, the trading/control
 // features, and the insight + governance modules. Donor Management is the
 // first fully built module; the rest are registered scaffolds awaiting their

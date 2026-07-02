@@ -29,7 +29,7 @@ export function AuthLayout() {
           component="p"
           sx={{ mt: 0.5, color: "secondary.main" }}
         >
-          Budgeting · Trading · Reporting
+          Budgeting · Tracking · Reporting
         </Typography>
       </Box>
 

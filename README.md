@@ -1,4 +1,4 @@
-# Zariya — Budgeting, Trading & Reporting
+# Zariya — Budgeting, Tracking & Reporting Tool
 
 A [The Convergence Foundation](https://www.theconvergencefoundation.org) product. Modular enterprise frontend: a platform kernel (auth, permissions, module registry) hosting plug-and-play business modules mapped to the Zariya scope — Budget, Forecast, Actuals, Variance, Committed (Trading), Unassigned Funding, Donor Management, Optimiser, Reporting, and Governance. Donor Management is the reference module.
 
@@ -28,4 +28,4 @@ Password for all: `Zariya#2026`
 | finance@theconvergencefoundation.org | Accounts / Finance Officer | View + edit + comment, all modules |
 | fundraising@theconvergencefoundation.org | Fund Raising Lead | View + edit + comment, Donor Management only |
 
-New registrations stay **pending** until approved by technology@theconvergencefoundation.org (simulated in the mock auth service).
+New registrations stay **pending** until approved by technology@a-pag.org (simulated in the mock auth service).

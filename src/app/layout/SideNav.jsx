@@ -40,7 +40,7 @@ export function SideNav() {
           Zariya
         </Typography>
         <Typography variant="caption" color="text.secondary" sx={{ letterSpacing: "0.08em" }}>
-          A CONVERGENCE FOUNDATION PRODUCT
+          BUDGETING · TRACKING · REPORTING
         </Typography>
       </Box>
 
